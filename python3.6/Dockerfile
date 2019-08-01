@@ -12,6 +12,6 @@ RUN mkdir -p /home/app \
 USER app
 WORKDIR /home/app
 
-# Set up Poetry
-RUN python3.6 -m pip install --no-cache-dir --user poetry
+# Set up Poetry et al.
+RUN python3.6 -m pip install --no-cache-dir --user poetry mypy codecov tox
 ENV PATH=~/.local/bin:$PATH
