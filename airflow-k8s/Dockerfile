@@ -72,6 +72,7 @@ RUN set -ex \
 
 COPY airflow-k8s/script/entrypoint.sh /entrypoint.sh
 COPY airflow-k8s/config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
+COPY airflow-k8s/known_hosts ${AIRFLOW_USER_HOME}/.ssh/known_hosts
 
 RUN chown -R airflow: ${AIRFLOW_USER_HOME}
 
