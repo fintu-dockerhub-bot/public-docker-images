@@ -20,4 +20,5 @@ WORKDIR /home/app
 
 # Set up Poetry et al.
 ENV PATH=~/.local/bin:$PATH
+RUN echo "export PATH=~/.local/bin:$PATH" >> ~/.profile
 RUN python3.6 -m pip install --no-cache-dir --user poetry mypy codecov tox
