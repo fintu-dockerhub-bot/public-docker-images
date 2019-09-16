@@ -22,4 +22,4 @@ WORKDIR /home/app
 ENV PATH=~/.local/bin:$PATH
 RUN python3.6 -m pip install --no-cache-dir --user poetry mypy codecov tox
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/bash", "-c"]
