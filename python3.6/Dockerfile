@@ -11,14 +11,12 @@ RUN apt install -y locales
 RUN echo "de_DE.utf-8 UTF-8" >> /etc/locale.gen
 RUN locale-gen
 
+# Set up Poetry et al.
+RUN python3.6 -m pip install --no-cache-dir poetry mypy codecov tox
+
 # Set up non-root user
 RUN mkdir -p /home/app \
     && groupadd -r app && useradd -r -g app -d /home/app app \
     && chown -R app:app /home/app
 USER app
 WORKDIR /home/app
-
-# Set up Poetry et al.
-ENV PATH=~/.local/bin:$PATH
-RUN echo "export PATH=~/.local/bin:$PATH" >> ~/.profile
-RUN python3.6 -m pip install --no-cache-dir --user poetry mypy codecov tox
