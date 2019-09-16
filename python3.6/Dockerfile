@@ -21,5 +21,3 @@ WORKDIR /home/app
 # Set up Poetry et al.
 ENV PATH=~/.local/bin:$PATH
 RUN python3.6 -m pip install --no-cache-dir --user poetry mypy codecov tox
-
-ENTRYPOINT ["/bin/bash", "-c"]
