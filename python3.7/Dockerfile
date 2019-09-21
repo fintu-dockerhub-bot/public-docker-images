@@ -1,4 +1,4 @@
-FROM python:3.6-slim-buster
+FROM python:3.7-slim-buster
 
 # Install system dependencies
 #
@@ -17,7 +17,7 @@ RUN echo "de_DE.utf-8 UTF-8" >> /etc/locale.gen
 RUN locale-gen
 
 # Set up Poetry et al.
-RUN python3.6 -m pip install --no-cache-dir poetry mypy codecov tox
+RUN python3.7 -m pip install --no-cache-dir poetry mypy codecov tox
 
 # Set up non-root user
 RUN mkdir -p /home/app \
