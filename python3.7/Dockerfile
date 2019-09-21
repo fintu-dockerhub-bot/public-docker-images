@@ -1,4 +1,4 @@
-FROM python:3.7-slim-buster
+FROM python:3.7.3
 
 # Install system dependencies
 #
@@ -15,7 +15,7 @@ RUN apt-get update \
     && locale-gen
 
 # Set up Poetry et al.
-RUN python3.7 -m pip install --no-cache-dir poetry mypy codecov tox
+RUN python -m pip install --no-cache-dir poetry mypy codecov tox
 
 # Set up non-root user
 RUN mkdir -p /home/app \
