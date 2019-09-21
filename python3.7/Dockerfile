@@ -6,15 +6,13 @@ FROM python:3.7-slim-buster
 RUN apt-get update \
     && apt-get install -y \
         build-essential \
-        git \ 
+        git \
         libsnappy-dev \
+        locales \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-# Support German locale
-RUN apt install -y locales
-RUN echo "de_DE.utf-8 UTF-8" >> /etc/locale.gen
-RUN locale-gen
+    && rm -rf /var/lib/apt/lists/* \
+    && echo "de_DE.utf-8 UTF-8" >> /etc/locale.gen \
+    && locale-gen
 
 # Set up Poetry et al.
 RUN python3.7 -m pip install --no-cache-dir poetry mypy codecov tox
