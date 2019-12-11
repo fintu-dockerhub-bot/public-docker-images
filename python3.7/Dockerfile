@@ -3,12 +3,14 @@ FROM python:3.7.3
 # Install system dependencies
 #
 # * libsnappy-dev: for python-snappy
+# * gettext-base: for envsubst
 RUN apt-get update \
     && apt-get install -y \
         build-essential \
         git \
         libsnappy-dev \
         locales \
+        gettext-base \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && echo "de_DE.utf-8 UTF-8" >> /etc/locale.gen \
