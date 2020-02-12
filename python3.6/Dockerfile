@@ -1,5 +1,7 @@
 FROM python:3.6-slim-buster
 
+ENV POETRY_VERSION=1.0.3
+
 # Install system dependencies
 #
 # * libsnappy-dev: for python-snappy
@@ -15,7 +17,8 @@ RUN apt-get update \
     && locale-gen
 
 # Set up Poetry et al.
-RUN python3.6 -m pip install --no-cache-dir poetry mypy codecov tox
+RUN python3.6 -m pip install --no-cache-dir poetry==${POETRY_VERSION} mypy codecov tox && \
+    pip install --upgrade pip
 
 # Set up non-root user
 RUN mkdir -p /home/app \

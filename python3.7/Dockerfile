@@ -1,5 +1,7 @@
 FROM python:3.7.3
 
+ENV POETRY_VERSION=1.0.3
+
 # Install system dependencies
 #
 # * libsnappy-dev: for python-snappy
@@ -16,8 +18,9 @@ RUN apt-get update \
     && echo "de_DE.utf-8 UTF-8" >> /etc/locale.gen \
     && locale-gen
 
-# Set up Poetry et al.
-RUN python -m pip install --no-cache-dir poetry mypy codecov tox
+# Install pip and poetry
+RUN python -m pip install --no-cache-dir poetry==${POETRY_VERSION} mypy codecov tox && \
+    pip install --upgrade pip
 
 # Set up non-root user
 RUN mkdir -p /home/app \
